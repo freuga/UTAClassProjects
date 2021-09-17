@@ -1,0 +1,518 @@
+******************************************************************************
+                  TI ARM Linker PC v18.12.3                    
+******************************************************************************
+>> Linked Thu May  7 19:23:05 2020
+
+OUTPUT FILE NAME:   <Embedded_II.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00003c21
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00003cde  0003c322  R  X
+  SRAM                  20000000   00008000  0000158b  00006a75  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00003ce0   00003ce0    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00003a3a   00003a3a    r-x .text
+  00003ca8    00003ca8    00000038   00000038    r-- .cinit
+20000000    20000000    00001590   00000000    rw-
+  20000000    20000000    00000d6b   00000000    rw- .bss
+  20000d70    20000d70    00000800   00000000    rw- .stack
+  20001570    20001570    00000020   00000000    rw- .data
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00003a3a     
+                  0000026c    000016e4     main.obj (.text)
+                  00001950    00000b20     rs485Table.obj (.text)
+                  00002470    000007c0     gpio.obj (.text)
+                  00002c30    0000046c     timer.obj (.text)
+                  0000309c    0000033c     uart0.obj (.text)
+                  000033d8    000002e8     convert.obj (.text)
+                  000036c0    00000234     uart1.obj (.text)
+                  000038f4    000000e4     buffer.obj (.text)
+                  000039d8    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00003a74    00000084     eeprom.obj (.text)
+                  00003af8    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  00003b72    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00003bda    00000002     --HOLE-- [fill = 0]
+                  00003bdc    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00003c20    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00003c54    00000024     wait.obj (.text)
+                  00003c78    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00003c86    0000000c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
+                  00003c92    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00003c9e    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00003ca2    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00003ca8    00000038     
+                  00003ca8    00000013     (.cinit..data.load) [load image, compression = lzss]
+                  00003cbb    00000001     --HOLE-- [fill = 0]
+                  00003cbc    0000000c     (__TI_handler_table)
+                  00003cc8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00003cd0    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.bss       0    20000000    00000d6b     UNINITIALIZED
+                  20000000    00000488     (.common:txTable)
+                  20000488    00000438     (.common:rxTable)
+                  200008c0    000003e8     (.common:buffer)
+                  20000ca8    0000003c     (.common:actTable)
+                  20000ce4    00000028     (.common:fn)
+                  20000d0c    00000028     (.common:period)
+                  20000d34    00000028     (.common:ticks)
+                  20000d5c    0000000c     (.common:reload)
+                  20000d68    00000003     rs485Table.obj (.bss)
+
+.data      0    20001570    00000020     UNINITIALIZED
+                  20001570    00000015     rs485Table.obj (.data)
+                  20001585    00000002     main.obj (.data)
+                  20001587    00000001     --HOLE--
+                  20001588    00000008     buffer.obj (.data)
+
+.stack     0    20000d70    00000800     UNINITIALIZED
+                  20000d70    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000d74    000007fc     --HOLE--
+
+MODULE SUMMARY
+
+       Module                         code    ro data   rw data
+       ------                         ----    -------   -------
+    .\
+       main.obj                       5860    0         62     
+       rs485Table.obj                 2848    0         2264   
+       gpio.obj                       1984    0         0      
+       timer.obj                      1132    0         132    
+       buffer.obj                     228     0         1008   
+       uart0.obj                      828     0         0      
+       convert.obj                    744     0         0      
+       tm4c123gh6pm_startup_ccs.obj   12      620       0      
+       uart1.obj                      564     0         0      
+       eeprom.obj                     132     0         0      
+       wait.obj                       36      0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         14368   620       3466   
+                                                               
+    C:\ti\ccs910\ccs\tools\compiler\ti-cgt-arm_18.12.3.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj              156     0         0      
+       memset_t2.asm.obj              122     0         0      
+       copy_decompress_lzss.c.obj     104     0         0      
+       autoinit.c.obj                 68      0         0      
+       boot_cortex_m.c.obj            52      0         0      
+       copy_decompress_none.c.obj     14      0         0      
+       copy_zero_init.c.obj           12      0         0      
+       exit.c.obj                     4       0         0      
+       pre_init.c.obj                 4       0         0      
+    +--+------------------------------+-------+---------+---------+
+       Total:                         536     0         0      
+                                                               
+       Stack:                         0       0         2048   
+       Linker Generated:              0       55        0      
+    +--+------------------------------+-------+---------+---------+
+       Grand Total:                   14904   675       5514   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00003cd0 records: 2, size/record: 8, table size: 16
+	.data: load addr=00003ca8, load size=00000013 bytes, run addr=20001570, run size=00000020 bytes, compression=lzss
+	.bss: load addr=00003cc8, load size=00000008 bytes, run addr=20000000, run size=00000d6b bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00003cbc records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                          
+-------   ----                          
+00003ca3  C$$EXIT                       
+00003c93  ResetISR                      
+20001570  __STACK_END                   
+00000800  __STACK_SIZE                  
+20000f70  __STACK_TOP                   
+00003cd0  __TI_CINIT_Base               
+00003ce0  __TI_CINIT_Limit              
+00003cbc  __TI_Handler_Table_Base       
+00003cc8  __TI_Handler_Table_Limit      
+00003bdd  __TI_auto_init_nobinit_nopinit
+00003b73  __TI_decompress_lzss          
+00003c79  __TI_decompress_none          
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+00000000  __TI_static_base__            
+00003c87  __TI_zero_init                
+00003af9  __aeabi_memclr                
+00003af9  __aeabi_memclr4               
+00003af9  __aeabi_memclr8               
+000039d9  __aeabi_memcpy                
+000039d9  __aeabi_memcpy4               
+000039d9  __aeabi_memcpy8               
+00003afb  __aeabi_memset                
+00003afb  __aeabi_memset4               
+00003afb  __aeabi_memset8               
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+UNDEFED   __mpu_init                    
+20000d70  __stack                       
+00003c21  _c_int00_noargs               
+UNDEFED   _system_post_cinit            
+00003c9f  _system_pre_init              
+00003ca3  abort                         
+000023bb  ackCommand                    
+2000157b  ackReq                        
+20000ca8  actTable                      
+20001586  activities                    
+00003655  arrayTo32                     
+ffffffff  binit                         
+200008c0  buffer                        
+00003975  bufferIsr                     
+000033d9  c_strcmp                      
+0000341f  c_strlen                      
+00002079  calcBackoff                   
+000037e3  clearParityError              
+00000417  countDown                     
+000020dd  decrementBackoffs             
+00003805  disableParityBitUart1         
+00002aa1  disablePinInterrupt           
+000027d9  disablePinPulldown            
+00002791  disablePinPullup              
+0000252d  disablePort                   
+0000026d  doActivity                    
+00003811  enableEmptyTxIntUart1         
+000037f9  enableParityBitUart1          
+00002a7d  enablePinInterrupt            
+000027b5  enablePinPulldown             
+00002763  enablePinPullup               
+00002471  enablePort                    
+00003839  enableRxIntUart1              
+00001c01  findEntrySpotRx               
+00001bc3  findEntrySpotTx               
+00001b7b  findNextMsg                   
+0000239f  finishedRxCommand             
+00000449  flash                         
+20000ce4  fn                            
+00000000  g_pfnVectors                  
+00001afb  getAck                        
+000019cb  getAddress                    
+00001af5  getId                         
+00001ad7  getIndex                      
+00001add  getIndexRx                    
+00001ae9  getPhase                      
+00001aef  getPhaseRx                    
+00002aeb  getPinValue                   
+00002ba1  getPortValue                  
+00001a71  getRxCommandChannel           
+00001aa5  getRxCommandData              
+00001a8b  getRxCommandDataSize          
+00001a3d  getRxCommandId                
+000019d1  getRxCommandIndex             
+00001a23  getRxCommandSrc               
+00001a57  getRxCommandType              
+00001abd  getTransmissions              
+00001b01  getTxAck                      
+00001ae3  getTxRow                      
+000031bd  getcUart0                     
+000037c9  getcUart1                     
+000031c9  getsUart0                     
+20001570  hwAddress                     
+000019c1  incId                         
+20001574  index                         
+20001580  indexRx                       
+000038f5  initBuffer                    
+000015d3  initChannels                  
+00003a75  initEeprom                    
+00001611  initHw                        
+00002c31  initTimer                     
+0000309d  initUart0                     
+000036ed  initUart1                     
+000034b1  intToStr                      
+00003527  intToStrHex                   
+000037d5  isParityError                 
+00003887  isRxIntUart1                  
+00003877  isTxIntUart1                  
+0000336f  isUart0Busy                   
+0000335f  isUart0Empty                  
+00003867  isUart1Busy                   
+00003857  isUart1Empty                  
+00003345  kbhitUart0                    
+00001757  main                          
+000039d9  memcpy                        
+00003b01  memset                        
+20001585  newLine                       
+0000324d  parseStr                      
+20000d0c  period                        
+20001579  phase                         
+20001584  phaseRx                       
+00001b61  primePump                     
+000004bd  printDataReport               
+000005e5  printError                    
+00000479  printHelp                     
+0000059d  printQueueMessage             
+00001951  printTxMessage                
+00000f41  processCommand                
+00003175  putcUart0                     
+00003781  putcUart1                     
+00003191  putsUart0                     
+0000379d  putsUart1                     
+00001ca1  queueMessage                  
+2000157c  random                        
+0000307d  random32                      
+00003abd  readEeprom                    
+2000158c  readIndex                     
+00002189  receiveMessage                
+20000d5c  reload                        
+00002f95  restartTimer                  
+0000088d  runRxCommand                  
+20000488  rxTable                       
+00002697  selectPinAnalogInput          
+00002649  selectPinDigitalInput         
+000029b3  selectPinInterruptBothEdges   
+00002963  selectPinInterruptFallingEdge 
+00002a09  selectPinInterruptHighLevel   
+00002a43  selectPinInterruptLowLevel    
+00002913  selectPinInterruptRisingEdge  
+000025fb  selectPinOpenDrainOutput      
+000025ad  selectPinPushPullOutput       
+00001ded  sendMessage                   
+2000157a  sequenceId                    
+00001b39  setAck                        
+0000033b  setActivity                   
+000003d5  setActivityTimer              
+00001b25  setAddress                    
+00002801  setPinAuxFunction             
+000026e7  setPinCommitControl           
+00002ac5  setPinValue                   
+00002b1d  setPortValue                  
+00001b4d  setRandom                     
+00003149  setUart0BaudRate              
+000036c1  setUart1BaudRate              
+00000469  softwareReset                 
+00002cd3  startOneshotTimer             
+00002d65  startOneshotTimerMs           
+00002deb  startPeriodicTimer            
+00002e7d  startPeriodicTimerMs          
+00002f21  stopTimer                     
+0000359b  strHexToUint8                 
+00003445  strToInt                      
+00003003  tickIsr                       
+20000d34  ticks                         
+00000427  turnOffLeds                   
+00000d33  txEmptyIsr                    
+20001578  txRow                         
+20000000  txTable                       
+00003c55  waitMicrosecond               
+00003923  writeBuffer                   
+00003a8b  writeEeprom                   
+20001588  writeIndex                    
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                          
+-------   ----                          
+00000000  __TI_static_base__            
+00000000  g_pfnVectors                  
+0000026d  doActivity                    
+0000033b  setActivity                   
+000003d5  setActivityTimer              
+00000417  countDown                     
+00000427  turnOffLeds                   
+00000449  flash                         
+00000469  softwareReset                 
+00000479  printHelp                     
+000004bd  printDataReport               
+0000059d  printQueueMessage             
+000005e5  printError                    
+00000800  __STACK_SIZE                  
+0000088d  runRxCommand                  
+00000d33  txEmptyIsr                    
+00000f41  processCommand                
+000015d3  initChannels                  
+00001611  initHw                        
+00001757  main                          
+00001951  printTxMessage                
+000019c1  incId                         
+000019cb  getAddress                    
+000019d1  getRxCommandIndex             
+00001a23  getRxCommandSrc               
+00001a3d  getRxCommandId                
+00001a57  getRxCommandType              
+00001a71  getRxCommandChannel           
+00001a8b  getRxCommandDataSize          
+00001aa5  getRxCommandData              
+00001abd  getTransmissions              
+00001ad7  getIndex                      
+00001add  getIndexRx                    
+00001ae3  getTxRow                      
+00001ae9  getPhase                      
+00001aef  getPhaseRx                    
+00001af5  getId                         
+00001afb  getAck                        
+00001b01  getTxAck                      
+00001b25  setAddress                    
+00001b39  setAck                        
+00001b4d  setRandom                     
+00001b61  primePump                     
+00001b7b  findNextMsg                   
+00001bc3  findEntrySpotTx               
+00001c01  findEntrySpotRx               
+00001ca1  queueMessage                  
+00001ded  sendMessage                   
+00002079  calcBackoff                   
+000020dd  decrementBackoffs             
+00002189  receiveMessage                
+0000239f  finishedRxCommand             
+000023bb  ackCommand                    
+00002471  enablePort                    
+0000252d  disablePort                   
+000025ad  selectPinPushPullOutput       
+000025fb  selectPinOpenDrainOutput      
+00002649  selectPinDigitalInput         
+00002697  selectPinAnalogInput          
+000026e7  setPinCommitControl           
+00002763  enablePinPullup               
+00002791  disablePinPullup              
+000027b5  enablePinPulldown             
+000027d9  disablePinPulldown            
+00002801  setPinAuxFunction             
+00002913  selectPinInterruptRisingEdge  
+00002963  selectPinInterruptFallingEdge 
+000029b3  selectPinInterruptBothEdges   
+00002a09  selectPinInterruptHighLevel   
+00002a43  selectPinInterruptLowLevel    
+00002a7d  enablePinInterrupt            
+00002aa1  disablePinInterrupt           
+00002ac5  setPinValue                   
+00002aeb  getPinValue                   
+00002b1d  setPortValue                  
+00002ba1  getPortValue                  
+00002c31  initTimer                     
+00002cd3  startOneshotTimer             
+00002d65  startOneshotTimerMs           
+00002deb  startPeriodicTimer            
+00002e7d  startPeriodicTimerMs          
+00002f21  stopTimer                     
+00002f95  restartTimer                  
+00003003  tickIsr                       
+0000307d  random32                      
+0000309d  initUart0                     
+00003149  setUart0BaudRate              
+00003175  putcUart0                     
+00003191  putsUart0                     
+000031bd  getcUart0                     
+000031c9  getsUart0                     
+0000324d  parseStr                      
+00003345  kbhitUart0                    
+0000335f  isUart0Empty                  
+0000336f  isUart0Busy                   
+000033d9  c_strcmp                      
+0000341f  c_strlen                      
+00003445  strToInt                      
+000034b1  intToStr                      
+00003527  intToStrHex                   
+0000359b  strHexToUint8                 
+00003655  arrayTo32                     
+000036c1  setUart1BaudRate              
+000036ed  initUart1                     
+00003781  putcUart1                     
+0000379d  putsUart1                     
+000037c9  getcUart1                     
+000037d5  isParityError                 
+000037e3  clearParityError              
+000037f9  enableParityBitUart1          
+00003805  disableParityBitUart1         
+00003811  enableEmptyTxIntUart1         
+00003839  enableRxIntUart1              
+00003857  isUart1Empty                  
+00003867  isUart1Busy                   
+00003877  isTxIntUart1                  
+00003887  isRxIntUart1                  
+000038f5  initBuffer                    
+00003923  writeBuffer                   
+00003975  bufferIsr                     
+000039d9  __aeabi_memcpy                
+000039d9  __aeabi_memcpy4               
+000039d9  __aeabi_memcpy8               
+000039d9  memcpy                        
+00003a75  initEeprom                    
+00003a8b  writeEeprom                   
+00003abd  readEeprom                    
+00003af9  __aeabi_memclr                
+00003af9  __aeabi_memclr4               
+00003af9  __aeabi_memclr8               
+00003afb  __aeabi_memset                
+00003afb  __aeabi_memset4               
+00003afb  __aeabi_memset8               
+00003b01  memset                        
+00003b73  __TI_decompress_lzss          
+00003bdd  __TI_auto_init_nobinit_nopinit
+00003c21  _c_int00_noargs               
+00003c55  waitMicrosecond               
+00003c79  __TI_decompress_none          
+00003c87  __TI_zero_init                
+00003c93  ResetISR                      
+00003c9f  _system_pre_init              
+00003ca3  C$$EXIT                       
+00003ca3  abort                         
+00003cbc  __TI_Handler_Table_Base       
+00003cc8  __TI_Handler_Table_Limit      
+00003cd0  __TI_CINIT_Base               
+00003ce0  __TI_CINIT_Limit              
+20000000  txTable                       
+20000488  rxTable                       
+200008c0  buffer                        
+20000ca8  actTable                      
+20000ce4  fn                            
+20000d0c  period                        
+20000d34  ticks                         
+20000d5c  reload                        
+20000d70  __stack                       
+20000f70  __STACK_TOP                   
+20001570  __STACK_END                   
+20001570  hwAddress                     
+20001574  index                         
+20001578  txRow                         
+20001579  phase                         
+2000157a  sequenceId                    
+2000157b  ackReq                        
+2000157c  random                        
+20001580  indexRx                       
+20001584  phaseRx                       
+20001585  newLine                       
+20001586  activities                    
+20001588  writeIndex                    
+2000158c  readIndex                     
+ffffffff  __TI_pprof_out_hndl           
+ffffffff  __TI_prof_data_size           
+ffffffff  __TI_prof_data_start          
+ffffffff  __binit__                     
+ffffffff  __c_args__                    
+ffffffff  binit                         
+UNDEFED   __mpu_init                    
+UNDEFED   _system_post_cinit            
+
+[180 symbols]

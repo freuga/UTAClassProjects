@@ -1,0 +1,1 @@
+"./buffer.obj" "./convert.obj" "./eeprom.obj" "./gpio.obj" "./main.obj" "./rs485Table.obj" "./timer.obj" "./tm4c123gh6pm_startup_ccs.obj" "./uart0.obj" "./uart1.obj" "./wait.obj" "../tm4c123gh6pm.cmd" -llibc.a 
