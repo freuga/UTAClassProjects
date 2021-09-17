@@ -1,0 +1,3 @@
+So this version has mpu control.
+
+CPU time calculation could use some work and the priority inheritance function is kinda questionable
